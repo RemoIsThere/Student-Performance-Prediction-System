@@ -28,7 +28,7 @@ The dataset tracks student achievements in secondary education of two Portuguese
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/student-performance-prediction.git
+git clone https://github.com/RemoIsThere/student-performance-prediction.git
 cd student-performance-prediction
 ```
 
