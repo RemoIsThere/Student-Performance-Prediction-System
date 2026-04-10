@@ -43,7 +43,7 @@ pip install -r requirements.txt
 ### 3. Run the application
 
 ```bash
-streamlit run app.py
+streamlit run src/app.py
 ```
 
 The application will be accessible locally at `http://localhost:8501`.
@@ -53,22 +53,29 @@ The application will be accessible locally at `http://localhost:8501`.
 If you want to re-train the model with new data or hyperparameter adjustments:
 
 ```bash
-python main.py
+python scripts/train.py
 ```
 
-This script will preprocess the `student-mat.csv` data, retrain the Random Forest model, output accuracy metrics, and export the `.pkl` artifacts.
+This script will preprocess the `data/student-mat.csv` data, retrain the Random Forest model, output accuracy metrics, and export the `.pkl` artifacts to the `models/` directory.
 
 ## 📂 Project Structure
 
 ```text
 .
-├── app.py                  # Streamlit web application
-├── main.py                 # Model training pipeline and evaluation script
-├── predict.py              # Command-line utility for predictions
-├── requirements.txt        # Python dependencies
-├── model_columns.pkl       # Serialized columns expected by the model
-├── student_model.pkl       # Trained Scikit-Learn model
-└── student-mat.csv         # Raw dataset
+├── data/
+│   └── student-mat.csv         # Raw dataset
+├── models/
+│   ├── student_model.pkl       # Trained Scikit-Learn model
+│   └── model_columns.pkl       # Serialized columns expected by the model
+├── scripts/
+│   ├── train.py                # Model training pipeline and evaluation script
+│   └── predict.py              # Command-line utility for predictions
+├── src/
+│   └── app.py                  # Streamlit web application
+├── .streamlit/
+│   └── config.toml             # UI theme configurations
+├── requirements.txt            # Python dependencies
+└── README.md
 ```
 
 ## 🤝 Contributing

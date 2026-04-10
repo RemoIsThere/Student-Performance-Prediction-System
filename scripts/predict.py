@@ -2,11 +2,17 @@
 CLI utility for making predictions using the trained Student Performance Model.
 """
 
+import os
 import pandas as pd
 import joblib
 
+# Default paths
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MODEL_PATH = os.path.join(ROOT_DIR, 'models', 'student_model.pkl')
+COLUMNS_PATH = os.path.join(ROOT_DIR, 'models', 'model_columns.pkl')
+
 class StudentRiskPredictor:
-    def __init__(self, model_path='student_model.pkl', columns_path='model_columns.pkl'):
+    def __init__(self, model_path=MODEL_PATH, columns_path=COLUMNS_PATH):
         try:
             self.model = joblib.load(model_path)
             self.model_columns = joblib.load(columns_path)

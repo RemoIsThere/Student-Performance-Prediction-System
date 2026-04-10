@@ -7,6 +7,12 @@ from fpdf import FPDF
 import base64
 import os
 
+# Base paths
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MODEL_PATH = os.path.join(ROOT_DIR, "models", "student_model.pkl")
+COLUMNS_PATH = os.path.join(ROOT_DIR, "models", "model_columns.pkl")
+DATA_PATH = os.path.join(ROOT_DIR, "data", "student-mat.csv")
+
 # Set Page Config
 st.set_page_config(
     page_title="Student Risk Forecaster",
@@ -33,11 +39,11 @@ st.markdown("""
 
 @st.cache_resource
 def load_model():
-    model = joblib.load('student_model.pkl')
-    columns = joblib.load('model_columns.pkl')
+    model = joblib.load(MODEL_PATH)
+    columns = joblib.load(COLUMNS_PATH)
     # Let's also load the dataset to compute baselines for radar charts
-    if os.path.exists('student-mat.csv'):
-        df_raw = pd.read_csv('student-mat.csv', sep=';')
+    if os.path.exists(DATA_PATH):
+        df_raw = pd.read_csv(DATA_PATH, sep=';')
     else:
         df_raw = None
     return model, columns, df_raw
